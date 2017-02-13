@@ -1,33 +1,20 @@
 <ion-header>
-	<ion-navbar>		
-		<ion-title>Gama Contacts</ion-title>
+	<ion-navbar>
+		<ion-title>
+			Gama Contacts
+		</ion-title>
 		<ion-buttons end>
-			<button ion-button icon-only (click)="addContact()"><ion-icon name="person-add"></ion-icon></button>
-		</ion-buttons>	
+	        <button ion-button icon-only (click)="AddContact()"><ion-icon name="person-add"></ion-icon></button>
+	    </ion-buttons>
 	</ion-navbar>
 </ion-header>
 
-<ion-content>
-	<!-- <ion-item-group *ngFor="let group of groupedContacts">
-		<ion-item-divider light>{{group.letter}}</ion-item-divider> -->
-		<ion-list>
-			<ion-item-sliding *ngFor="let contact of contacts">
-				<ion-item>
-					{{contact.name}}
-				</ion-item>
-				<ion-item-options>
-					<button ion-button icon-only (click)="editContact(contact)" light>
-						<ion-icon name="paper"></ion-icon>
-					</button>
-					<button ion-button icon-only (click)="deleteContact(contact)" danger>
-						<ion-icon name="trash"></ion-icon>
-					</button>
-				</ion-item-options>
-			</ion-item-sliding>
-		</ion-list>
-	<!-- </ion-item-group> -->
-	
-	<!-- <ion-tabs>
-		<ion-tab [root]="tab1Root" tabTitle="Gama Contacts" tabIcon="person"></ion-tab>>
-	</ion-tabs> -->
+<ion-content padding>
+	<ion-input type="text" [(ngModel)]="searchstring" placeholder="Search contact name..."></ion-input>
+	<button ion-button (click)="FindContact(searchstring)">Search</button>
+	<ion-list [hidden]="!search">
+		<ion-item *ngFor="let item of searchresult">
+			{{item.displayName}}
+		</ion-item>
+	</ion-list>
 </ion-content>
